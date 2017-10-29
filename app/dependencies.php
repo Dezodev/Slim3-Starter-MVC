@@ -15,3 +15,6 @@ $container['view'] = function ($c) {
     
     return $view;
 };
+
+// Register controllers
+$container['HomeController'] = function ($c) { return new \App\Controllers\HomeController($c); };

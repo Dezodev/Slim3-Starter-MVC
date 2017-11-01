@@ -11,11 +11,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
 
-    {% block addheader %}{% endblock addheader %}
+    {% block addheader %}{% endblock %}
 </head>
 
 <body>
-    {% block content %}{% endblock content %}
+    {# Header #}
+    <header>
+        <nav class="navbar navbar-dark bg-dark justify-content-between">
+            <div class="container">
+                <a href="{{ base_url() }}" class="navbar-brand mb-0 h1">Slim3 Starter MVC</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="main" class="my-5">
+        {% block content %}{% endblock %}
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
@@ -23,7 +34,7 @@
 
     <script src="{{ base_url() }}/assets/js/app.js"></script>
 
-    {% block addfooter %}{% endblock addfooter %}
+    {% block addfooter %}{% endblock %}
 </body>
 
 </html>

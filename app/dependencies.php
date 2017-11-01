@@ -2,6 +2,7 @@
 
 $container = $app->getContainer();
 
+// Twig view
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../views', [
         'cache' => false,
@@ -14,6 +15,17 @@ $container['view'] = function ($c) {
     ));
     
     return $view;
+};
+
+// Database
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+$container['db'] = function ($container) use ($capsule) {
+    return $capsule;
 };
 
 // Register controllers

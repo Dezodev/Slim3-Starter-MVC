@@ -10,3 +10,7 @@ body {
   background: #e4e4e4;
   color: #333;
 }
+.dropdown-menu .dropdown-item .fa {
+  width: 20px;
+  text-align: center;
+}

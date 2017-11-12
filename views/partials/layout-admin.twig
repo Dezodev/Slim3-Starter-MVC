@@ -13,6 +13,7 @@
     <link href="{{ base_url() }}/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="{{ base_url() }}/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <link href="{{ base_url() }}/assets/css/admin/sb-admin.css" rel="stylesheet">
+    <link href="{{ base_url() }}/assets/css/app.css" rel="stylesheet">
 
     {% block addheader %}{% endblock %}
 </head>
@@ -26,6 +27,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+            
+            {# Admin menu #}
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                     <a class="nav-link" href="{{ base_url() }}/admin/">
@@ -33,6 +36,22 @@
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Utilisateurs">
+                    <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseUtilisateurs" data-parent="#exampleAccordion" aria-expanded="true">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span class="nav-link-text">Utilisateurs</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseUtilisateurs" style="">
+                      <li>
+                        <a href="{{ path_for('admin_user_list') }}">Tous les utilisateurs</a>
+                      </li>
+                      <li>
+                        <a href="{{ path_for('admin_user_new') }}">Nouveau utilisateur</a>
+                      </li>
+                    </ul>
+                  </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
                     <a class="nav-link" href="{{ base_url() }}">
                         <i class="fa fa-fw fa-link"></i>
@@ -40,6 +59,7 @@
                     </a>
                 </li>
             </ul>
+            
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
                     <a class="nav-link text-center" id="sidenavToggler">
@@ -97,13 +117,18 @@
             </div>
         </div>
         
-        <script src="{{ base_url() }} /../../../node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="{{ base_url() }} /../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="{{ base_url() }} /../../../node_modules/jquery.easing/jquery.easing.min.js"></script>
-        <script src="{{ base_url() }} /../../../node_modules/chart.js/dist/Chart.min.js"></script>
-        <script src="{{ base_url() }} /../../../node_modules/datatables.net/js/jquery.dataTables.js"></script>
-        <script src="{{ base_url() }} /../../../node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
-        <script src="{{ base_url() }} /../../../assets/js/admin/sb-admin.js"></script>
+        <script src="{{ base_url() }}/node_modules/jquery/dist/jquery.min.js"></script>
+        
+        <script src="{{ base_url() }}/node_modules/popper.js/dist/umd/popper.min.js"></script>
+        <script src="{{ base_url() }}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="{{ base_url() }}/node_modules/moment/min/moment-with-locales.min.js"></script>
+        <script src="{{ base_url() }}/node_modules/jquery.easing/jquery.easing.min.js"></script>
+        <script src="{{ base_url() }}/node_modules/chart.js/dist/Chart.min.js"></script>
+        <script src="{{ base_url() }}/node_modules/datatables.net/js/jquery.dataTables.js"></script>
+        <script src="{{ base_url() }}/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+        <script src="{{ base_url() }}/assets/js/admin/sb-admin.js"></script>
+        <script src="{{ base_url() }}/assets/js/app.js"></script>
 
         {% block addfooter %}{% endblock %}
     </div>

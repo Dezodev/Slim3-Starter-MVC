@@ -3,10 +3,10 @@
 namespace App\Controllers;
 use App\Models\User;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     public function index($request, $response, $args)
     {        
-        return $this->view->render($response, 'home/index.twig');       
+        return $this->view->render($response, 'admin/index.twig');       
     }
 }

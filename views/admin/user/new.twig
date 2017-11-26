@@ -1,28 +1,24 @@
 {% extends "partials/layout-admin.twig" %}
 
 {% block content %}
-    <h1>Nouveau utilisateur</h1>
-
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ path_for('admin_user_new') }}" method="post">
-                <div class="form-group">
-                    <label for="name">Nom d'utilisateur</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Nom d'utilisateur"/>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"/>
-                </div>
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="name@email.me"/>
-                </div>
-                <div class="float-right">
-                    <button type="submit" class="btn btn-primary">Ajouter</button>                        
-                    <a id="btn-annuler" class="btn btn-secondary" href="{{ path_for('admin_user_list') }}" role="button">Annuler</a>
-                </div>
-            </form>
+    <h1 class="page-header">Nouveau utilisateur</h1>
+    
+    <form action="{{ path_for('admin_user_new') }}" method="post">
+        <div class="form-group">
+            <label for="name">Nom d'utilisateur</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Nom d'utilisateur"/>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="name@email.me"/>
+        </div>
+        <div class="float-right">
+            <button type="submit" class="btn btn-primary">Ajouter</button>                        
+            <a id="btn-annuler" class="btn btn-secondary" href="{{ path_for('admin_user_list') }}" role="button">Annuler</a>
+        </div>
+    </form>
 {% endblock %}

@@ -1,5 +1,5 @@
 {
-  "name": "sli3-starter-mvc",
+  "name": "slim3-starter-mvc",
   "version": "1.0.0",
   "description": "Slim Framework 3 starter for your new project with Twig and MVC structure",
   "main": "index.js",
@@ -18,12 +18,11 @@
   "homepage": "https://github.com/Dezodev/Slim3-Starter-MVC#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
-    "chart.js": "^2.7.1",
-    "datatables.net": "^1.10.16",
-    "datatables.net-bs4": "^1.10.16",
+    "chartist": "^0.11.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "jquery.easing": "^1.4.1",
+    "linearicons": "^1.0.1",
+    "metismenu": "^2.7.1",
     "popper.js": "^1.12.7"
   }
 }

@@ -30,6 +30,6 @@ $container['db'] = function ($container) use ($capsule) {
 
 // Register controllers
 $container['HomeController'] = function ($c) { return new \App\Controllers\HomeController($c); };
-$container['AdminController'] = function ($c) { return new \App\Controllers\AdminController($c); };
+$container['AdminController'] = function ($c) { return new App\Controllers\Admin\AdminController($c); };
 $container['UserController'] = function ($c) { return new \App\Controllers\Admin\UserController($c); };
 $container['AuthController'] = function ($c) { return new \App\Controllers\AuthController($c); };

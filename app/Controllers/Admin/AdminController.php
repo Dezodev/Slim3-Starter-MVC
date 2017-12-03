@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers\Admin;
+use App\Controllers\Controller;
 use App\Models\User;
 
 class AdminController extends Controller

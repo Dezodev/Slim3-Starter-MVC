@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 use App\Models\User;
 use App\Controllers\Controller;
+use Respect\Validation\Validator as v;
 
 class UserController extends Controller
 {
@@ -19,6 +20,17 @@ class UserController extends Controller
 
     public function create($request, $response)
     {        
+        $validation = $this->validator->validate($request, [
+            'name' => v::notEmpty()->alpha(),
+            'email' => v::noWhitespace()->notEmpty()->email(),
+            'password' => v::notEmpty(),
+        ]);
+        
+        if ($validation->failed()) {
+            return $response->withRedirect($this->router->pathFor('admin_user_new'));
+        }
+            
+
         $user = User::create([
             'name' => $request->getParam('name'),
             'email' => $request->getParam('email'),

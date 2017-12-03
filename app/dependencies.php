@@ -17,6 +17,11 @@ $container['view'] = function ($c) {
     return $view;
 };
 
+// Validator
+$container['validator'] = function(){
+    return new App\Validation\Validator;
+};
+
 // Database
 $capsule = new \Illuminate\Database\Capsule\Manager;
 $capsule->addConnection($container['settings']['db']);

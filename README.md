@@ -7,6 +7,7 @@ Slim Framework 3 starter for your new project with Twig and MVC structure
 * Eloquent
 * MVC structure
 * Admin panel
+* Validation rules via Respect\Validation
 
 ## Install
 

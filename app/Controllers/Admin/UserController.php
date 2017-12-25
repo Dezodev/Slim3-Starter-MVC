@@ -21,8 +21,8 @@ class UserController extends Controller
     public function create($request, $response)
     {        
         $validation = $this->validator->validate($request, [
-            'name' => v::notEmpty()->alnum()->NoWhitespace(),
-            'email' => v::noWhitespace()->notEmpty()->email(),
+            'username' => v::notEmpty()->alnum()->NoWhitespace()->usernameAvailable(),
+            'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
             'password' => v::notEmpty()->length(6, null),
         ]);
         
@@ -32,7 +32,7 @@ class UserController extends Controller
             
 
         $user = User::create([
-            'name' => $request->getParam('name'),
+            'username' => $request->getParam('username'),
             'email' => $request->getParam('email'),
             'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
         ]);

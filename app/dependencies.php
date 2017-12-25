@@ -1,4 +1,5 @@
 <?php
+use Respect\Validation\Validator as v;
 
 $container = $app->getContainer();
 
@@ -44,3 +45,6 @@ $container['AuthController'] = function ($c) { return new \App\Controllers\AuthC
 // Add Middleware
 $app->add(new App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new App\Middleware\OldInputsMiddleware($container));
+
+// Validate rules
+v::with('App\\Validation\\Rules\\');

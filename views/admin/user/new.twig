@@ -5,11 +5,11 @@
 
     <form action="{{ path_for('admin_user_new') }}" method="post">
         <div class="form-group">
-            <label for="name">Nom d'utilisateur</label>
-            <input type="text" class="form-control{{ validatorError.name ? ' is-invalid' : '' }}" name="name" id="name" value="{{ oldInputs.name }}" placeholder="Nom d'utilisateur"/>
-            {% if validatorError.name %}
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" class="form-control{{ validatorError.username ? ' is-invalid' : '' }}" name="username" id="username" value="{{ oldInputs.username }}" placeholder="Nom d'utilisateur"/>
+            {% if validatorError.username %}
                 <div class="invalid-feedback">
-                    {% for msg in validatorError.name %}
+                    {% for msg in validatorError.username %}
                         <p class="mb-0">{{ msg }}</p>
                     {% endfor %}
                 </div>

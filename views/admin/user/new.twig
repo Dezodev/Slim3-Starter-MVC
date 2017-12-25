@@ -2,19 +2,40 @@
 
 {% block content %}
     <h1 class="page-header">Nouveau utilisateur</h1>
-    
+
     <form action="{{ path_for('admin_user_new') }}" method="post">
         <div class="form-group">
             <label for="name">Nom d'utilisateur</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Nom d'utilisateur"/>
+            <input type="text" class="form-control{{ validatorError.name ? ' is-invalid' : '' }}" name="name" id="name" value="{{ oldInputs.name }}" placeholder="Nom d'utilisateur"/>
+            {% if validatorError.name %}
+                <div class="invalid-feedback">
+                    {% for msg in validatorError.name %}
+                        <p class="mb-0">{{ msg }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"/>
+            <input type="password" class="form-control{{ validatorError.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="Mot de passe"/>
+            {% if validatorError.password %}
+                <div class="invalid-feedback">
+                    {% for msg in validatorError.password %}
+                        <p class="mb-0">{{ msg }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label for="email">Adresse email</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="name@email.me"/>
+            <input type="email" class="form-control{{ validatorError.email ? ' is-invalid' : '' }}" name="email" id="email" value="{{ oldInputs.email }}" placeholder="name@email.me"/>
+            {% if validatorError.email %}
+                <div class="invalid-feedback">
+                    {% for msg in validatorError.email %}
+                        <p class="mb-0">{{ msg }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
         <div class="float-right">
             <button type="submit" class="btn btn-primary">Ajouter</button>                        

@@ -13,6 +13,8 @@ $container['view'] = function ($c) {
         $c['router'],
         $basePath
     ));
+
+    $view->getEnvironment();
     
     return $view;
 };
@@ -38,3 +40,7 @@ $container['HomeController'] = function ($c) { return new \App\Controllers\HomeC
 $container['AdminController'] = function ($c) { return new App\Controllers\Admin\AdminController($c); };
 $container['UserController'] = function ($c) { return new \App\Controllers\Admin\UserController($c); };
 $container['AuthController'] = function ($c) { return new \App\Controllers\AuthController($c); };
+
+// Add Middleware
+$app->add(new App\Middleware\ValidationErrorsMiddleware($container));
+$app->add(new App\Middleware\OldInputsMiddleware($container));

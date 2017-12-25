@@ -21,9 +21,9 @@ class UserController extends Controller
     public function create($request, $response)
     {        
         $validation = $this->validator->validate($request, [
-            'name' => v::notEmpty()->alpha(),
+            'name' => v::notEmpty()->alnum()->NoWhitespace(),
             'email' => v::noWhitespace()->notEmpty()->email(),
-            'password' => v::notEmpty(),
+            'password' => v::notEmpty()->length(6, null),
         ]);
         
         if ($validation->failed()) {

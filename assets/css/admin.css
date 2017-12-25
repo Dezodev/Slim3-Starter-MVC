@@ -36,3 +36,7 @@ h4,
 .btn {
   border-radius: 1px;
 }
+pre {
+  background: #f5f5f5;
+  padding: 15px;
+}

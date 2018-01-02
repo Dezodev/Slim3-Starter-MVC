@@ -8,26 +8,30 @@ $container['csrf'] = function ($c) {
     return new \Slim\Csrf\Guard;
 };
 
+// Authentification
+$container['auth'] = function ($c) {
+    return new \App\Auth\Auth;
+};
+
 // Twig view
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../views', [
         'cache' => false,
     ]);
-    
+
     $basePath = rtrim(str_ireplace('index.php', '', $c['request']->getUri()->getBasePath()), '/');
-    $view->addExtension(new \Slim\Views\TwigExtension( $c['router'], $basePath ));
+    $view->addExtension(new \Slim\Views\TwigExtension($c['router'], $basePath));
     $view->addExtension(new App\Views\CsrfExtension($c['csrf']));
 
     $view->getEnvironment();
-    
+
     return $view;
 };
 
 // Validator
-$container['validator'] = function(){
+$container['validator'] = function () {
     return new App\Validation\Validator;
 };
-
 
 // Database
 $capsule = new \Illuminate\Database\Capsule\Manager;
@@ -41,10 +45,10 @@ $container['db'] = function ($container) use ($capsule) {
 };
 
 // Register controllers
-$container['HomeController'] = function ($c) { return new \App\Controllers\HomeController($c); };
-$container['AdminController'] = function ($c) { return new App\Controllers\Admin\AdminController($c); };
-$container['UserController'] = function ($c) { return new \App\Controllers\Admin\UserController($c); };
-$container['AuthController'] = function ($c) { return new \App\Controllers\AuthController($c); };
+$container['HomeController'] = function ($c) {return new \App\Controllers\HomeController($c);};
+$container['AdminController'] = function ($c) {return new App\Controllers\Admin\AdminController($c);};
+$container['UserController'] = function ($c) {return new \App\Controllers\Admin\UserController($c);};
+$container['AuthController'] = function ($c) {return new \App\Controllers\AuthController($c);};
 
 $app->add($container->get('csrf'));
 

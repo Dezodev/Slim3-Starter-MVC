@@ -2,6 +2,9 @@
 
 $app->get('/', 'HomeController:index')->setName('public_home');
 
+$app->get('/auth/signin', 'AuthController:signin')->setName('auth_signin');
+$app->post('/auth/signin', 'AuthController:signinPost');
+
 $app->group('/admin', function (){
     $this->get('/', 'AdminController:index')->setName('admin_home');
 

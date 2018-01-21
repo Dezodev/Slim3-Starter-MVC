@@ -21,4 +21,19 @@ class Auth {
 
 		return false;
 	}
+
+	public function check() {
+		return isset($_SESSION['user']);
+	}
+
+	public function user() {
+		if($this->check())
+			return User::find($_SESSION['user']);
+		else
+			return null;
+	}
+
+	public function logout() {
+		unset($_SESSION['user']);
+	}
 }

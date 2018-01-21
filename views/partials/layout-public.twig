@@ -9,17 +9,49 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
-
-    {% block addheader %}{% endblock %}
+    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css"> {% block addheader %}{% endblock %}
 </head>
 
 <body>
-    {# Header #}
     <header>
-        <nav class="navbar navbar-dark bg-dark justify-content-between">
-            <div class="container">
-                <a href="{{ base_url() }}" class="navbar-brand mb-0 h1">Slim3 Starter MVC</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+            <a href="{{ base_url() }}" class="navbar-brand mb-0 h1">Slim3 Starter MVC</a> {# Header #}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Toutes les liens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownCategory">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    {% if auth.check %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownCategory">
+                                <a class="dropdown-item" href="{{ path_for('admin_home') }}">Aller à l'admin</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path_for('auth_signout') }}">Déconexion</a>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+                <div class="extra-info">
+                    <p class="mb-0">Extra-info</p>
+                </div>
             </div>
         </nav>
     </header>

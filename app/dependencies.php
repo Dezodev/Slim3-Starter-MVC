@@ -23,7 +23,10 @@ $container['view'] = function ($c) {
     $view->addExtension(new \Slim\Views\TwigExtension($c['router'], $basePath));
     $view->addExtension(new App\Views\CsrfExtension($c['csrf']));
 
-    $view->getEnvironment();
+    $view->getEnvironment()->addGlobal('auth', [
+        'check' => $c->auth->check(),
+        'user' => $c->auth->user(),
+    ]);
 
     return $view;
 };

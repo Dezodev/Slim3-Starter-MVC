@@ -6,8 +6,8 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function signin($request, $response, $args)
-    {        
-        return $this->view->render($response, 'auth/signin.twig');       
+    {
+        return $this->view->render($response, 'auth/signin.twig');
     }
 
     public function signinPost($request, $response, $args){
@@ -20,5 +20,10 @@ class AuthController extends Controller
     		return $response->withRedirect($this->router->pathFor('auth_signin'));
     	}
     	return $response->withRedirect($this->router->pathFor('admin_home'));
+    }
+
+    public function signout($request, $response, $args) {
+        $this->auth->logout();
+        return $response->withRedirect($this->router->pathFor('public_home'));
     }
 }

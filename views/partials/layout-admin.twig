@@ -32,7 +32,7 @@
             <ul class="nav navbar-nav ml-md-auto flex-row navbar-top-links">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i>
+                        <i class="fa fa-user fa-fw"></i>&nbsp; {{ auth.user.username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-user">
                         <a class="dropdown-item" href="#">
@@ -42,7 +42,7 @@
                             <i class="fa fa-gear fa-fw"></i> Paramètres
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ path_for('auth_signout') }}">
                             <i class="fa fa-sign-out fa-fw"></i> Déconnexion
                         </a>
                     </div>
@@ -103,7 +103,7 @@
     <script src="{{ base_url() }}/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ base_url() }}/node_modules/metismenu/dist/metisMenu.js"></script>
 
-    <script src="{{ base_url() }}/assets/js/admin/sb-admin-2.js"></script>
+    <script src="{{ base_url() }}/assets/js/admin/admin.js"></script>
     <script src="{{ base_url() }}/assets/js/app.js"></script>
 
     {% block addfooter %}{% endblock %}

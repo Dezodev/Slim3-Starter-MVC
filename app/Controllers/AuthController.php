@@ -5,8 +5,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function signin($request, $response, $args)
-    {
+    public function signin($request, $response, $args) {
         return $this->view->render($response, 'auth/signin.twig');
     }
 
@@ -17,6 +16,7 @@ class AuthController extends Controller
     	);
 
     	if (!$auth) {
+            $this->flash->addMessage('danger', 'Erreur : vous n\'avez pas pu être connecté.');
     		return $response->withRedirect($this->router->pathFor('auth_signin'));
     	}
     	return $response->withRedirect($this->router->pathFor('admin_home'));

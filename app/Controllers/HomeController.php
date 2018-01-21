@@ -6,7 +6,9 @@ use App\Models\User;
 class HomeController extends Controller
 {
     public function index($request, $response, $args)
-    {        
-        return $this->view->render($response, 'home/index.twig');       
+    {
+        $this->flash->addMessage('info', '<strong>Erreur :</strong> vous n\'avez pas pu être connecté.');
+
+        return $this->view->render($response, 'home/index.twig');
     }
 }

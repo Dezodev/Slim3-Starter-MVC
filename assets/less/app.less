@@ -1,8 +1,8 @@
-// out: ../css/app.css
+// out: ../css/app.css, compress: true
 
 /**
  * Slim3 Starter MVC
- * 
+ *
  * Version: 0.0.1
  * Authors: Dezodev
 **/
@@ -11,9 +11,18 @@
 @background-color: #e4e4e4;
 @font-color: #333;
 
+// App color
+@primary-color: #607D8B;
+@secondary-color: #455A64;
+@success-color : #60a917;
+@info-color : #3498db;
+@warning-color : #e67e22;
+@danger-color : #d9534f;
+
+
 
 /** General
-**========================**/
+******************************/
 
 body {
     background: @background-color; color: @font-color;
@@ -22,5 +31,128 @@ body {
 .dropdown-menu {
     .dropdown-item {
         .fa { width: 20px; text-align: center; }
+    }
+}
+
+/* Alert */
+.alert {
+    border-radius: 1px; padding: 8px 20px; border:none; border-left: 10px solid transparent;
+    background-color: rgba(51,51,51, 0.9); color:#fff;
+    .close { padding:8px 20px 8px 0; }
+
+    &.alert-primary { border-color: @primary-color;
+        .alert-link { color: darken(@primary-color, 5%); }
+    }
+    &.alert-secondary { border-color: @secondary-color;
+        .alert-link { color: darken(@secondary-color, 5%); }
+    }
+    &.alert-success { border-color: @success-color;
+        .alert-link { color: darken(@success-color, 5%); }
+    }
+    &.alert-info { border-color: @info-color;
+        .alert-link { color: darken(@info-color, 5%); }
+    }
+    &.alert-warning { border-color: @warning-color;
+        .alert-link { color: darken(@warning-color, 5%); }
+    }
+    &.alert-danger { border-color: @danger-color;
+        .alert-link { color: darken(@danger-color, 5%); }
+    }
+    &.alert-light {
+        border-color: #424242; background: #F2F2F2; color: @font-color;
+        border-top: 1px solid #AAA; border-right: 1px solid #AAA;
+        border-bottom: 1px solid #AAA;
+        .alert-link { color: darken(#424242, 5%); }
+    }
+    &.alert-dismissible {
+        padding-right: 33px;
+        .close {
+            padding-left: 10px; padding-right: 10px;
+        }
+    }
+}
+
+/* Button */
+.btn {
+    // border-radius: 1px;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-sm { line-height: 1.2!important; }
+
+.btn-primary { background-color: @primary-color; border: darken(@primary-color, 5%);
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(@primary-color, 5%); }
+}
+
+.btn-secondary {
+    background-color: #FFFFFF; border: darken(#FFFFFF, 5%); color: @font-color;
+    border: 1px solid #ccc;
+
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(#FFFFFF, 5%); color: @font-color; border: 1px solid #ccc; }
+
+    .fa { color:#666; }
+
+    &.current { background-color: #ddd; }
+
+}
+.btn-outline-primary { color: @primary-color; border-color: @primary-color;
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: @primary-color; }
+}
+.btn-success { background-color: @success-color; border: darken(@success-color, 5%);
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(@success-color, 5%); }
+}
+.btn-outline-success { color: @success-color; border-color: @success-color;
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: @success-color; }
+}
+.btn-info { background-color: @info-color; border: darken(@info-color, 5%);
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(@info-color, 5%); }
+}
+.btn-outline-info { color: @info-color; border-color: @info-color;
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: @info-color; }
+}
+.btn-warning { background-color: @warning-color; border: darken(@warning-color, 5%);
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(@warning-color, 5%); }
+}
+.btn-outline-warning { color: @warning-color; border-color: @warning-color;
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: @warning-color; }
+}
+.btn-danger { background-color: @danger-color; border: darken(@danger-color, 5%);
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: darken(@danger-color, 5%); }
+}
+.btn-outline-danger { color: @danger-color; border-color: @danger-color;
+    &:not([disabled]):not(.disabled).active, &:not([disabled]):not(.disabled):active,
+    .show>&.dropdown-toggle, &:hover { background-color: @danger-color; }
+}
+
+/** Header
+******************************/
+
+@media (min-width: 992px) {
+    .navbar-nav .dropdown {
+        & > .dropdown-menu {
+            min-width: inherit; width: 100vw; position: fixed; left: 0; top: 56px;
+            margin: 0; border: none; border-radius: 0; background: @primary-color;
+            padding-left: 10px; padding-right: 10px;
+
+            a { color: #FFF;
+                &:hover { text-decoration: none; }
+            }
+            .dropdown-item {
+                display: inline-block; width: auto;
+
+                &:hover { background: @secondary-color; }
+            }
+        }
     }
 }

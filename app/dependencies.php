@@ -13,6 +13,11 @@ $container['auth'] = function ($c) {
     return new \App\Auth\Auth;
 };
 
+// Flash messages
+$container['flash'] = function ($c) {
+    return new \Slim\Flash\Messages;
+};
+
 // Twig view
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../views', [
@@ -27,6 +32,7 @@ $container['view'] = function ($c) {
         'check' => $c->auth->check(),
         'user' => $c->auth->user(),
     ]);
+    $view->getEnvironment()->addGlobal('flash', $c['flash']);
 
     return $view;
 };

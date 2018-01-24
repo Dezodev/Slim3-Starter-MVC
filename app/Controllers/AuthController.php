@@ -6,6 +6,9 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function signin($request, $response, $args) {
+        if ($this->container->auth->check())
+            return $response->withRedirect($this->container->router->pathFor('admin_home'));
+
         return $this->view->render($response, 'auth/signin.twig');
     }
 

@@ -1,4 +1,5 @@
 <?php
+use App\Middleware\AuthMiddleware;
 
 $app->get('/', 'HomeController:index')->setName('public_home');
 
@@ -18,4 +19,4 @@ $app->group('/admin', function (){
     $this->get('', function ($req, $res){
         return $res->withRedirect($this->router->pathFor('admin_home'));
     });
-});
+})->add(new AuthMiddleware($container));

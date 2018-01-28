@@ -8,6 +8,7 @@ Slim Framework 3 starter for your new project with Twig and MVC structure
 * MVC structure
 * Admin panel
 * Validation rules via Respect\Validation
+* Flash message
 
 ## Install
 

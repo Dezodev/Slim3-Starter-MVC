@@ -22,11 +22,13 @@ $container['flash'] = function ($c) {
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../views', [
         'cache' => false,
+        'debug' => true,
     ]);
 
     $basePath = rtrim(str_ireplace('index.php', '', $c['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new \Slim\Views\TwigExtension($c['router'], $basePath));
     $view->addExtension(new App\Views\CsrfExtension($c['csrf']));
+    $view->addExtension(new Twig_Extension_Debug());
 
     $view->getEnvironment()->addGlobal('auth', [
         'check' => $c->auth->check(),

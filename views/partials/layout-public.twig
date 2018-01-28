@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <title>Slim 3</title>
     <!-- Required meta tags -->
@@ -11,8 +10,8 @@
     <link href="{{ base_url() }}/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ base_url() }}/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css"> {% block addheader %}{% endblock %}
+    <link href="{{ base_url() }}/assets/css/main.css" rel="stylesheet">
 </head>
-
 <body>
     <header>
         {% include 'partials/navbar.twig' %}
@@ -31,5 +30,4 @@
 
     {% block addfooter %}{% endblock %}
 </body>
-
 </html>

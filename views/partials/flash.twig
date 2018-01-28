@@ -1,44 +1,11 @@
-{% if flash.getFirstMessage('danger') %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ flash.getFirstMessage('danger') | raw }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
 
-{% if flash.getFirstMessage('warning') %}
-    <div class="alert alert-warning alert-dismissible fade show">
-        {{ flash.getFirstMessage('warning') | raw }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
-
-{% if flash.getFirstMessage('info') %}
-    <div class="alert alert-info alert-dismissible fade show">
-        {{ flash.getFirstMessage('info') | raw }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
-
-{% if flash.getFirstMessage('primary') %}
-    <div class="alert alert-primary alert-dismissible fade show">
-        {{ flash.getFirstMessage('primary') | raw }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
-
-{% if flash.getFirstMessage('success') %}
-    <div class="alert alert-success alert-dismissible fade show">
-        {{ flash.getFirstMessage('success') | raw }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-{% endif %}
+{% for flmsg_type, flmsgs in flash.getMessages() %}
+    {% for flmsg in flmsgs %}
+        <div class="alert alert-{{ flmsg_type }} alert-dismissible fade show" role="alert">
+            {{ flmsg | raw }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endfor %}

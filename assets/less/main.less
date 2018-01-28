@@ -1,0 +1,48 @@
+// out: ../css/main.css, compress: true
+
+/**
+ * Slim3 Starter MVC
+ *
+ * Version: 0.0.1
+ * Authors: Dezodev
+**/
+
+@import "_vars";
+
+/* Alert */
+.alert {
+    border-radius: 1px; padding: 8px 20px; border:none; border-left: 10px solid transparent;
+    background-color: rgba(51,51,51, 0.9); color:#fff;
+    .close { padding:8px 20px 8px 0; }
+
+    &.alert-primary { border-color: @primary-color;
+        .alert-link { color: darken(@primary-color, 5%); }
+    }
+    &.alert-secondary { border-color: @secondary-color;
+        .alert-link { color: darken(@secondary-color, 5%); }
+    }
+    &.alert-success { border-color: @success-color;
+        .alert-link { color: darken(@success-color, 5%); }
+    }
+    &.alert-info { border-color: @info-color;
+        .alert-link { color: darken(@info-color, 5%); }
+    }
+    &.alert-warning { border-color: @warning-color;
+        .alert-link { color: darken(@warning-color, 5%); }
+    }
+    &.alert-danger { border-color: @danger-color;
+        .alert-link { color: darken(@danger-color, 5%); }
+    }
+    &.alert-light {
+        border-color: #424242; background: #F2F2F2; color: @font-color;
+        border-top: 1px solid #AAA; border-right: 1px solid #AAA;
+        border-bottom: 1px solid #AAA;
+        .alert-link { color: darken(#424242, 5%); }
+    }
+    &.alert-dismissible {
+        padding-right: 33px;
+        .close {
+            padding-left: 10px; padding-right: 10px;
+        }
+    }
+}

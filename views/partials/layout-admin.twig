@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,10 +14,11 @@
     <link href="{{ base_url() }}/node_modules/metismenu/dist/metisMenu.css" rel="stylesheet">
 
     <link href="{{ base_url() }}/assets/css/admin/sb-admin-2.css" rel="stylesheet">
-    <link href="{{ base_url() }}/assets/css/admin.css" rel="stylesheet"> {% block addheader %}{% endblock %}
+    <link href="{{ base_url() }}/assets/css/admin.css" rel="stylesheet">
+    <link href="{{ base_url() }}/assets/css/main.css" rel="stylesheet">
+    {% block addheader %}{% endblock %}
 </head>
-
-<body class="">
+<body>
     <div id="wrapper">
         <!-- Navigation -->
         <header class="align-items-start app-header flex-column flex-md-row navbar navbar-expand-md navbar-light">
@@ -87,11 +87,9 @@
             <!-- Page Content -->
             <div id="page-wrapper" class="p-4">
                 <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            {% block content %}{% endblock %}
-                        </div>
-                    </div>
+                    {% include 'partials/flash.twig' %}
+
+                    {% block content %}{% endblock %}
                 </div>
             </div>
         </div>
@@ -108,5 +106,4 @@
 
     {% block addfooter %}{% endblock %}
 </body>
-
 </html>

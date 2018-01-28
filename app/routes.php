@@ -12,9 +12,15 @@ $app->group('/admin', function (){
 
     $this->get('/trystyle', 'AdminController:trystyle')->setName('admin_trystyle');
 
-    $this->get('/user', 'UserController:index')->setName('admin_user_list');
-    $this->get('/user/new', 'UserController:new')->setName('admin_user_new');
-    $this->post('/user/new', 'UserController:create');
+    $this->group('/user', function () {
+        $this->get('', 'UserController:index')->setName('admin_user_list');
+        $this->get('/new', 'UserController:new')->setName('admin_user_new');
+        $this->post('/new', 'UserController:create');
+        $this->get('/{id:[0-9]+}', 'UserController:show')->setName('admin_user_show');
+        $this->get('/{id:[0-9]+}/edit', 'UserController:edit')->setName('admin_user_edit');
+        $this->post('/{id:[0-9]+}/edit', 'UserController:update');
+        $this->get('/{id:[0-9]+}/delete', 'UserController:delete')->setName('admin_user_delete');
+    });
 
     $this->get('', function ($req, $res){
         return $res->withRedirect($this->router->pathFor('admin_home'));

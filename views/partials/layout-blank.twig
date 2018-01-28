@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <title>Slim 3</title>
     <!-- Required meta tags -->
@@ -10,11 +9,11 @@
     <!-- CSS -->
     <link href="{{ base_url() }}/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ base_url() }}/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ base_url() }}/assets/css/app.css">
+    <link href="{{ base_url() }}/assets/css/app.css" rel="stylesheet">
+    <link href="{{ base_url() }}/assets/css/main.css" rel="stylesheet">
 
     {% block addheader %}{% endblock %}
 </head>
-
 <body>
 
     <div id="main" class="my-5">
@@ -29,5 +28,4 @@
 
     {% block addfooter %}{% endblock %}
 </body>
-
 </html>

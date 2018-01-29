@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Models\User;
+use Respect\Validation\Validator as v;
+
 
 class AuthController extends Controller
 {
@@ -12,7 +14,18 @@ class AuthController extends Controller
         return $this->view->render($response, 'auth/signin.twig');
     }
 
-    public function signinPost($request, $response, $args){
+    public function signinPost($request, $response, $args){            
+
+        $validation = $this->validator->validate($request, [
+            'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+            'password' => v::notEmpty()->length(6, null),
+        ]);
+
+        if ($validation->failed()) {
+            $this->flash->addMessage('danger', 'Le formulaire n\'est pas valide.');
+            return $response->withRedirect($this->router->pathFor('auth_signin'));
+        }
+
     	$auth = $this->auth->attempt(
     		$request->getParam('email'),
     		$request->getParam('password')

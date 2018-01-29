@@ -9,6 +9,7 @@ Slim Framework 3 starter for your new project with Twig and MVC structure
 * Admin panel
 * Validation rules via Respect\Validation
 * Flash message
+* Database migration & seed via Phinx
 
 ## Install
 

@@ -9,4 +9,4 @@ database/seeds/*
 !database/seeds/.gitkeep
 
 # Application
-log/*
+logs/*

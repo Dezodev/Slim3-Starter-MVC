@@ -7,3 +7,6 @@ composer.phar
 node_modules
 database/seeds/*
 !database/seeds/.gitkeep
+
+# Application
+log/*

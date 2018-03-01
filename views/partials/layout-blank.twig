@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <title>Slim 3</title>
+    <title>{{ app_settings.site_name.value }} - {{ app_settings.site_baseline.value }}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,7 @@
 
     {% block addheader %}{% endblock %}
 </head>
-<body>
+<body class="blank-layout">
 
     <div id="main" class="my-5">
         {% block content %}{% endblock %}

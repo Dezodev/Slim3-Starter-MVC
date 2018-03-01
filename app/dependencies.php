@@ -1,5 +1,6 @@
 <?php
 use Respect\Validation\Validator as v;
+use App\Models\Setting;
 
 $container = $app->getContainer();
 
@@ -16,6 +17,14 @@ $container['auth'] = function ($c) {
 // Flash messages
 $container['flash'] = function ($c) {
     return new \Slim\Flash\Messages;
+};
+
+// Application logs
+$container['logger'] = function($c) {
+    $logger = new \Monolog\Logger('app_logger');
+    $file_handler = new \Monolog\Handler\StreamHandler('logs/app.log');
+    $logger->pushHandler($file_handler);
+    return $logger;
 };
 
 // Twig view
@@ -35,6 +44,7 @@ $container['view'] = function ($c) {
         'user' => $c->auth->user(),
     ]);
     $view->getEnvironment()->addGlobal('flash', $c['flash']);
+    $view->getEnvironment()->addGlobal('app_settings', Setting::all()->keyBy('slug')->toArray());
 
     return $view;
 };
@@ -56,14 +66,16 @@ $container['db'] = function ($container) use ($capsule) {
 };
 
 // Register controllers
-$container['HomeController'] = function ($c) {return new \App\Controllers\HomeController($c);};
+$container['PublicController'] = function ($c) {return new \App\Controllers\PublicController($c);};
 $container['AdminController'] = function ($c) {return new App\Controllers\Admin\AdminController($c);};
 $container['UserController'] = function ($c) {return new \App\Controllers\Admin\UserController($c);};
 $container['AuthController'] = function ($c) {return new \App\Controllers\AuthController($c);};
+$container['SettingController'] = function ($c) {return new \App\Controllers\Admin\SettingController($c);};
 
 $app->add($container->get('csrf'));
 
 // Add Middleware
+$app->add(new App\Middleware\MaintenanceModeMiddleware($container));
 $app->add(new App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new App\Middleware\OldInputsMiddleware($container));
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Slim3 Starter MVC</title>
+    <title>Admin Dashboard - {{ app_settings.site_name.value }}</title>
 
     <link href="{{ base_url() }}/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ base_url() }}/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
         <!-- Navigation -->
         <header class="align-items-start app-header flex-column flex-md-row navbar navbar-expand-md navbar-light">
             <div class="align-items-baseline d-flex flex-row navbar-brand p-lg-3 pl-3 pr-3 pt-3">
-                <a class="" href="{{ path_for('admin_home') }}">Slim Starter MVC</a>
+                <a class="" href="{{ path_for('admin_home') }}">{{ app_settings.site_name.value }}</a>
                 <button class="collapsed ml-auto navbar-toggler" type="button" data-toggle="collapse" data-target="#side-menu-wrapper" aria-controls="side-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,9 +37,6 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-user">
                         <a class="dropdown-item" href="#">
                             <i class="fa fa-user fa-fw"></i> Profil
-                        </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa fa-gear fa-fw"></i> Paramètres
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path_for('auth_signout') }}">
@@ -73,6 +70,11 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path_for('admin_setting') }}">
+                                <i class="fa fa-gear fa-fw"></i> Réglages
+                            </a>
                         </li>
                         <li class="list-group-item">
                             <a href="{{ base_url() }}">

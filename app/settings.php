@@ -2,7 +2,7 @@
 
 return [
     'settings' => [
-        'displayErrorDetails' => true,      
+        'displayErrorDetails' => true,
         'db' => [
             'driver' => 'mysql',
             'host' => '172.16.238.12',
@@ -13,5 +13,7 @@ return [
             'collation' => 'utf8mb4_general_ci',
             'prefix' => ''
         ],
+        // Only set this if you need access to route within middleware
+        'determineRouteBeforeAppMiddleware' => true
     ],
 ];

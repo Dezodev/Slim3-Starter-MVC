@@ -26,6 +26,14 @@ $app->group('/admin', function (){
         $this->get('/{id:[0-9]+}/delete', 'UserController:delete')->setName('admin_user_delete');
     });
 
+    // Medias
+    $this->group('/media', function () {
+        $this->get('', 'MediaController:index')->setName('admin_media_list');
+        $this->get('/upload', 'MediaController:upload')->setName('admin_media_upload');
+        $this->post('/upload', 'MediaController:save');
+        $this->get('/{id:[0-9]+}/delete', 'MediaController:delete')->setName('admin_media_delete');
+    });
+
     // Setting
     $this->get('/setting', 'SettingController:index')->setName('admin_setting');
     $this->post('/setting', 'SettingController:save');

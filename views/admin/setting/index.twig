@@ -1,76 +1,77 @@
 {% extends "partials/layout-admin.twig" %}
 
+{% block TitlePage %}Réglages{% endblock %}
+{% block BtnPage %}
+{% endblock %}
+
 {% block content %}
-    <form action="{{ path_for('admin_setting') }}" method="post">
-        <h1 class="page-header">
-            Réglages
-            <input type="submit" class="btn btn-primary float-right" value="Enregistrer" />
-        </h1>
+<form action="{{ path_for('admin_setting') }}" method="post">
 
-        <div class="card">
-            <div class="card-body">
-                {{ csrf_field() | raw }}
+    {{ csrf_field() | raw }}
 
-                <h2>Informations du site</h2>
+    <h2>Informations du site</h2>
 
-                <div class="form-group row">
-                    <label for="site_name" class="col-sm-4 col-md-2">Nom du site</label>
-                    <div class="col-sm-8 col-md-10">
-                        <input type="text" class="form-control {{ validatorError.site_name ? ' is-invalid' : '' }}" name="site_name" id="site_name" value="{{ app_settings.site_name.value }}" placeholder="Nom du site"/>
-                        {% if validatorError.site_name %}
-                            <div class="invalid-feedback">
-                                {% for msg in validatorError.site_name %}
-                                    <p class="mb-0">{{ msg }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="site_baseline" class="col-sm-4 col-md-2">Slogan du site</label>
-                    <div class="col-sm-8 col-md-10">
-                        <input type="text" class="form-control {{ validatorError.site_baseline ? ' is-invalid' : '' }}" name="site_baseline" id="site_baseline" value="{{ app_settings.site_baseline.value }}" placeholder="Slogan du site"/>
-                        {% if validatorError.site_baseline %}
-                            <div class="invalid-feedback">
-                                {% for msg in validatorError.site_baseline %}
-                                    <p class="mb-0">{{ msg }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="site_description" class="col-sm-4 col-md-2">Description du site</label>
-                    <div class="col-sm-8 col-md-10">
-                        <textarea type="text" class="form-control {{ validatorError.site_description ? ' is-invalid' : '' }}" name="site_description" id="site_description" value="{{ app_settings.site_description.value }}" placeholder="Description du site"></textarea>
-                        {% if validatorError.site_description %}
-                            <div class="invalid-feedback">
-                                {% for msg in validatorError.site_description %}
-                                    <p class="mb-0">{{ msg }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <h2>Options générale</h2>
-                <div class="row">
-                    <label class="col-sm-4 col-md-2">Mode maintenance</label>
-                    <div class="col-sm-8 col-md-10">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="maintenance_mode" name="maintenance_mode" value="1" {{ app_settings.maintenance_mode.value == '1' ? 'checked' : '' }}>
-                            <label class="form-check-label" for="maintenance_mode">Cocher cette case pour activer le mode maintenance</label>
-                        </div>
-                        {% if validatorError.maintenance_mode %}
-                            <div class="invalid-feedback">
-                                {% for msg in validatorError.maintenance_mode %}
-                                    <p class="mb-0">{{ msg }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
+    <div class="form-group row">
+        <label for="site_name" class="col-sm-4 col-md-2">Nom du site</label>
+        <div class="col-sm-8 col-md-10">
+            <input type="text" class="form-control {{ validatorError.site_name ? ' is-invalid' : '' }}" name="site_name" id="site_name" value="{{ app_settings.site_name.value }}" placeholder="Nom du site"/>
+            {% if validatorError.site_name %}
+            <div class="invalid-feedback">
+                {% for msg in validatorError.site_name %}
+                <p class="mb-0">{{ msg }}</p>
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
-    </form>
+    </div>
+    <div class="form-group row">
+        <label for="site_baseline" class="col-sm-4 col-md-2">Slogan du site</label>
+        <div class="col-sm-8 col-md-10">
+            <input type="text" class="form-control {{ validatorError.site_baseline ? ' is-invalid' : '' }}" name="site_baseline" id="site_baseline" value="{{ app_settings.site_baseline.value }}" placeholder="Slogan du site"/>
+            {% if validatorError.site_baseline %}
+            <div class="invalid-feedback">
+                {% for msg in validatorError.site_baseline %}
+                <p class="mb-0">{{ msg }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="site_description" class="col-sm-4 col-md-2">Description du site</label>
+        <div class="col-sm-8 col-md-10">
+            <textarea type="text" class="form-control {{ validatorError.site_description ? ' is-invalid' : '' }}" name="site_description" id="site_description" value="{{ app_settings.site_description.value }}" placeholder="Description du site"></textarea>
+            {% if validatorError.site_description %}
+            <div class="invalid-feedback">
+                {% for msg in validatorError.site_description %}
+                <p class="mb-0">{{ msg }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <h2>Options générale</h2>
+    <div class="row">
+        <label class="col-sm-4 col-md-2">Mode maintenance</label>
+        <div class="col-sm-8 col-md-10">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="maintenance_mode" name="maintenance_mode" value="1" {{ app_settings.maintenance_mode.value == '1' ? 'checked' : '' }}>
+                <label class="form-check-label" for="maintenance_mode">Cocher cette case pour activer le mode maintenance</label>
+            </div>
+            {% if validatorError.maintenance_mode %}
+            <div class="invalid-feedback">
+                {% for msg in validatorError.maintenance_mode %}
+                <p class="mb-0">{{ msg }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="text-right">
+        <input type="submit" class="btn btn-primary" value="Enregistrer" />
+    </div>
+
+</form>
 {% endblock %}

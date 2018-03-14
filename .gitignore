@@ -10,3 +10,5 @@ database/seeds/*
 
 # Application
 logs/*
+uploads/*
+!uploads/.gitkeep

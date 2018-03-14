@@ -1,66 +1,65 @@
 {% extends "partials/layout-admin.twig" %}
 
+{% block TitlePage %}Modifier l'utilisateur{% endblock %}
+{% block BtnPage %}
+{% endblock %}
+
 {% block content %}
-    <h1 class="page-header">Nouveau utilisateur</h1>
 
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ path_for('admin_user_edit', {id: user.id}) }}" method="post">
-                {{ csrf_field() | raw }}
-                <div class="form-group">
-                    <label for="username">Nom d'utilisateur</label>
-                    <input type="text" class="form-control{{ validatorError.username ? ' is-invalid' : '' }}" name="username" id="username" value="{{ user.username }}" placeholder="Nom d'utilisateur"/>
+<form action="{{ path_for('admin_user_edit', {id: user.id}) }}" method="post">
+    {{ csrf_field() | raw }}
+    <div class="form-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input type="text" class="form-control{{ validatorError.username ? ' is-invalid' : '' }}" name="username" id="username" value="{{ user.username }}" placeholder="Nom d'utilisateur"/>
 
-                    {% if validatorError.username %}
-                    <div class="invalid-feedback">
-                        {% for msg in validatorError.username %}
-                        <p class="mb-0">{{ msg }}</p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control{{ validatorError.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="Mot de passe"/>
-
-                    {% if validatorError.password %}
-                    <div class="invalid-feedback">
-                        {% for msg in validatorError.password %}
-                        <p class="mb-0">{{ msg }}</p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    <label for="password_confirm">Confirmer le mot de passe</label>
-                    <input type="password" class="form-control{{ validatorError.password_confirm ? ' is-invalid' : '' }}" name="password_confirm" id="password_confirm" placeholder="Mot de passe"/>
-
-                    {% if validatorError.password_confirm %}
-                    <div class="invalid-feedback">
-                        {% for msg in validatorError.password_confirm %}
-                        <p class="mb-0">{{ msg }}</p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" class="form-control{{ validatorError.email ? ' is-invalid' : '' }}" name="email" id="email" value="{{ user.email }}" placeholder="name@email.me"/>
-
-                    {% if validatorError.email %}
-                    <div class="invalid-feedback">
-                        {% for msg in validatorError.email %}
-                        <p class="mb-0">{{ msg }}</p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="float-right">
-                    <button type="submit" class="btn btn-primary">Modifier</button>
-                    <a id="btn-annuler" class="btn btn-secondary" href="{{ path_for('admin_user_list') }}" role="button">Annuler</a>
-                </div>
-            </form>
+        {% if validatorError.username %}
+        <div class="invalid-feedback">
+            {% for msg in validatorError.username %}
+            <p class="mb-0">{{ msg }}</p>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control{{ validatorError.password ? ' is-invalid' : '' }}" name="password" id="password" placeholder="Mot de passe"/>
+
+        {% if validatorError.password %}
+        <div class="invalid-feedback">
+            {% for msg in validatorError.password %}
+            <p class="mb-0">{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="password_confirm">Confirmer le mot de passe</label>
+        <input type="password" class="form-control{{ validatorError.password_confirm ? ' is-invalid' : '' }}" name="password_confirm" id="password_confirm" placeholder="Mot de passe"/>
+
+        {% if validatorError.password_confirm %}
+        <div class="invalid-feedback">
+            {% for msg in validatorError.password_confirm %}
+            <p class="mb-0">{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input type="email" class="form-control{{ validatorError.email ? ' is-invalid' : '' }}" name="email" id="email" value="{{ user.email }}" placeholder="name@email.me"/>
+
+        {% if validatorError.email %}
+        <div class="invalid-feedback">
+            {% for msg in validatorError.email %}
+            <p class="mb-0">{{ msg }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="float-right">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+        <a id="btn-annuler" class="btn btn-secondary" href="{{ path_for('admin_user_list') }}" role="button">Annuler</a>
+    </div>
+</form>
 
 {% endblock %}

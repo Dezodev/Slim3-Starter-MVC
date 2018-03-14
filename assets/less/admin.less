@@ -2,11 +2,12 @@
 
 @import "_vars";
 
-/* General */
+/* General
+** =============================== */
 
-body { color: @font-color; }
+body { font-size: .875rem; color: @font-color; background: @background-color; }
 
-    // Typography
+// Typography
 .h1, .h2, .h3, .h4, .h5, .h6,
 h1, h2, h3, h4, h5, h6 { color: @font-color; margin-bottom: 15px; }
 h1, .h1 { font-size: 2.2rem; }
@@ -15,16 +16,71 @@ h3, .h3 { font-size: 1.6rem; }
 h4, .h4 { font-size: 1.4rem; }
 .page-header { border-bottom: none; }
 
-    // Buttons
+// Buttons
 .btn {
     border-radius: 1px;
 }
 
-pre {
-    background: #ccc;
-    padding: 15px;
+// Text
+p { margin-bottom: 0.6rem; }
+
+// Other
+pre { background: #ccc; padding: 15px; }
+#page-wrapper { background: @background-color; }
+.feather { width: 16px; height: 16px; vertical-align: text-bottom; }
+
+/* Sidebar
+** =============================== */
+
+.sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 100; /* Behind the navbar */
+    padding: 0; box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+
+    .nav-link { font-weight: 500; color: #333;
+        &.active { color: #007bff; }
+        &:hover .feather, &.active .feather { color: inherit; }
+        .feather { margin-right: 4px; color: #999; }
+    }
 }
 
-#page-wrapper {
-    background: @background-color;
+.sidebar-sticky {
+    position: -webkit-sticky; position: sticky; margin-top: 48px; /* Height of navbar */
+height: calc(~"100vh - 48px"); padding-top: .5rem; overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+
+.sidebar-heading { font-size: .75rem; text-transform: uppercase; }
+
+/* Navbar
+** =============================== */
+
+.navbar-brand {
+    padding-top: .75rem; padding-bottom: .75rem; font-size: 1rem;
+    background-color: rgba(0, 0, 0, .25); box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .form-control {
+    padding: .75rem 1rem; border-width: 0; border-radius: 0;
+}
+
+.form-control-dark {
+    color: #fff; background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+    &:focus {
+        border-color: transparent; box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    }
+}
+
+
+/* Header
+** =============================== */
+
+.page-header-title {
+    h1 { margin-bottom: 0; }
+}
+
+/* Utilities
+** =============================== */
+
+.util-border-top { border-top: 1px solid #ccc; }
+.util-border-bottom { border-bottom: 1px solid #ccc; }

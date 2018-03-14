@@ -2,11 +2,16 @@
 use Respect\Validation\Validator as v;
 use App\Models\Setting;
 
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManager;
+
 $container = $app->getContainer();
 
 // CSRF protection
 $container['csrf'] = function ($c) {
-    return new \Slim\Csrf\Guard;
+    $guard = new \Slim\Csrf\Guard;
+    $guard->setPersistentTokenMode(true);
+    return $guard;
 };
 
 // Authentification
@@ -71,10 +76,20 @@ $container['AdminController'] = function ($c) {return new App\Controllers\Admin\
 $container['UserController'] = function ($c) {return new \App\Controllers\Admin\UserController($c);};
 $container['AuthController'] = function ($c) {return new \App\Controllers\AuthController($c);};
 $container['SettingController'] = function ($c) {return new \App\Controllers\Admin\SettingController($c);};
+$container['MediaController'] = function ($c) {return new \App\Controllers\Admin\MediaController($c);};
 
-$app->add($container->get('csrf'));
+// Variables
+$container['upload_dir'] = __DIR__ . '/../uploads';
+$container['upload_uri'] = '/uploads';
+
+// Image manager
+$container['imageManager'] = new ImageManager(array('driver' => 'imagick'));
+$container['imageSizes'] = [
+    [ '150', '150' ],
+];
 
 // Add Middleware
+$app->add($container->get('csrf'));
 $app->add(new App\Middleware\MaintenanceModeMiddleware($container));
 $app->add(new App\Middleware\ValidationErrorsMiddleware($container));
 $app->add(new App\Middleware\OldInputsMiddleware($container));

@@ -16,9 +16,7 @@ class MaintenanceModeMiddleware extends Middleware
         $rName = $route->getName();
         $maintMode = Setting::where('slug', 'maintenance_mode')->first();
 
-        $this->container['logger']->info('route name =>', [ 'routename' => $rName ]);
-
-        // die(var_export($this->container['logger'], 1));
+        // $this->container['logger']->info('route name =>', [ 'routename' => $rName ]);
 
         if ($rName != 'public_maintenance' && $maintMode->value == '1') {
             $response = $response->withRedirect($this->container['router']->pathFor('public_maintenance'));

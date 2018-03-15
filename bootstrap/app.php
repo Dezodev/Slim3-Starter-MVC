@@ -13,6 +13,22 @@ require __DIR__ . '/../vendor/autoload.php';
 
 session_start();
 
+define('SITE_ENV', 'developpment');
+
+switch (SITE_ENV) {
+    case 'developpment':
+        $dotenv_name = '.env.dev';
+        break;
+    case 'production':
+        $dotenv_name = '.env.prod';
+        break;
+    default:
+        $dotenv_name = '.env.'.SITE_ENV;
+        break;
+}
+
+$dotenv = (new \Dotenv\Dotenv(__DIR__ . '/../', $dotenv_name))->load();
+
 // Instantiate the app
 $settings = require __DIR__ . '/../app/settings.php';
 $app = new \Slim\App($settings);

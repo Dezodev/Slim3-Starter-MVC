@@ -7,28 +7,28 @@ environments:
     default_database: development
     production:
         adapter: mysql
-        host: '172.16.238.12'
+        host: 'localhost'
         name: 'slimstarter'
-        user: 'dbuser'
-        pass: 'rootv66'
+        user: 'root'
+        pass: ''
         port: 3306
         charset: utf8mb4
 
     development:
         adapter: mysql
-        host: '172.16.238.12'
+        host: 'localhost'
         name: 'slimstarter'
-        user: 'dbuser'
-        pass: 'rootv66'
+        user: 'root'
+        pass: ''
         port: 3306
         charset: utf8mb4
 
     testing:
         adapter: mysql
-        host: '172.16.238.12'
+        host: 'localhost'
         name: 'slimstarter'
-        user: 'dbuser'
-        pass: 'rootv66'
+        user: 'root'
+        pass: ''
         port: 3306
         charset: utf8mb4
 

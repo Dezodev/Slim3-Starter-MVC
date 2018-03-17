@@ -14,3 +14,4 @@ uploads/*
 !uploads/.gitkeep
 .env.dev
 .env.prod
+phinx.yml

@@ -27,6 +27,12 @@ switch (SITE_ENV) {
         break;
 }
 
+$filename = __DIR__ .'/../'. $dotenv_name;
+
+if (!file_exists($filename)) {
+    trigger_error("Cannot find env file", E_USER_ERROR);
+}
+
 $dotenv = (new \Dotenv\Dotenv(__DIR__ . '/../', $dotenv_name))->load();
 
 // Instantiate the app

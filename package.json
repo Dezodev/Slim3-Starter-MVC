@@ -1,30 +1,32 @@
 {
-  "name": "slim3-starter-mvc",
-  "version": "1.0.0",
-  "description": "Slim Framework 3 starter for your new project with Twig and MVC structure",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Dezodev/Slim3-Starter-MVC.git"
-  },
-  "author": "Dezodev",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Dezodev/Slim3-Starter-MVC/issues"
-  },
-  "homepage": "https://github.com/Dezodev/Slim3-Starter-MVC#readme",
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "chartist": "^0.11.0",
-    "dropzone": "^5.3.0",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
-    "lightbox2": "^2.10.0",
-    "linearicons": "^1.0.1",
-    "metismenu": "^2.7.1",
-    "popper.js": "^1.12.7"
-  }
+	"name": "slim3-starter-mvc",
+	"version": "1.0.0",
+	"description": "Slim Framework 3 starter for your new project with Twig and MVC structure",
+	"main": "index.js",
+	"scripts": {
+		"db:migrate:dev": "php vendor/bin/phinx migrate -e development",
+		"db:rollback:dev": "php vendor/bin/phinx rollback -e development",
+		"db:seed:dev": "php vendor/bin/phinx seed:run -e development"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Dezodev/Slim3-Starter-MVC.git"
+	},
+	"author": "Dezodev",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Dezodev/Slim3-Starter-MVC/issues"
+	},
+	"homepage": "https://github.com/Dezodev/Slim3-Starter-MVC#readme",
+	"dependencies": {
+		"bootstrap": "^4.3.1",
+		"chartist": "^0.11.0",
+		"dropzone": "^5.3.0",
+		"font-awesome": "^4.7.0",
+		"jquery": "^3.4.1",
+		"lightbox2": "^2.10.0",
+		"linearicons": "^1.0.1",
+		"metismenu": "^2.7.1",
+		"popper.js": "^1.12.7"
+	}
 }
